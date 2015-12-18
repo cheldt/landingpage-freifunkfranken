@@ -215,7 +215,7 @@ function initLanguageSelection() {
 		selectionHTML += '</div>';
 	selectionHTML += '</div>';
 
-	$('body').append(selectionHTML);
+	$('#container').prepend(selectionHTML);
 
 	$('.language-selection-item').click( function() {
 		changeLanguage($(this));
