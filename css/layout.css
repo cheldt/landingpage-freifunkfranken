@@ -51,30 +51,11 @@ p.intro {
 }
 
 aside {
-  float: right;
-  clear: right;
   width: 16em;
   margin-top: -10em;
   height:auto;
   text-align: left;
 }
-
-
-/*
-aside div {
-  padding:0.809em 1em 0;  
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
-  -webkit-box-align: stretch;  
-  display: -moz-box;
-  -moz-box-orient: horizontal;
-  -moz-box-align: stretch;  
-  display: box;
-  box-orient: horizontal;
-  box-align: stretch;  
-  text-align:left;  
-  }
-*/
 
 /* MEDIA QUERIES */
 
