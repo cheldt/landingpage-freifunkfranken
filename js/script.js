@@ -60,7 +60,10 @@ $(document).ready(function () {
             $('#accessBtn').empty().html(
                 '<a href="' + urlParams.access +
                 '?req=' + encodeURIComponent(urlParams.req) +
-                '"><span>Weitersurfen</span></a>');
+                '">' +
+                '<span class="lang-sensitive lang-de">Weitersurfen</span>' +
+                '<span class="lang-sensitive lang-en">Start surfing</span>' +
+                '</a>');
         }
     }
 
@@ -208,15 +211,19 @@ $(document).ready(function () {
 
 });
 
+/**
+ * Assembles language-selector and adds click-handler to language.
+ * Loads previously selected language and changes language accordingly.
+ */
 function initLanguageSelection() {
     var selectionHTML = '';
     selectionHTML += '<div class="language-selection-wrapper">';
-    selectionHTML += '<div class="language-selection-item selected" data-language="de">';
-    selectionHTML += '<span>DE</span>';
-    selectionHTML += '</div>';
-    selectionHTML += '<div class="language-selection-item" data-language="en">';
-    selectionHTML += '<span>EN</span>';
-    selectionHTML += '</div>';
+        selectionHTML += '<div class="language-selection-item selected" data-language="de">';
+            selectionHTML += '<span>DE</span>';
+        selectionHTML += '</div>';
+        selectionHTML += '<div class="language-selection-item" data-language="en">';
+            selectionHTML += '<span>EN</span>';
+        selectionHTML += '</div>';
     selectionHTML += '</div>';
 
     $('#container').prepend(selectionHTML);
@@ -241,12 +248,22 @@ function changeLanguage($selectedItem) {
     saveLanguage(selectedLanguage);
 }
 
+/**
+ * Saves language to local storage
+ *
+ * @param language
+ */
 function saveLanguage(language) {
     if (isLocalStorageSupported()) {
         localStorage.setItem('freifunk_franken_lang', language);
     }
 }
 
+/**
+ * Loads language from local storage
+ *
+ * @return {string}
+ */
 function loadLanguage() {
     var defaultLanguage = 'de';
 
@@ -263,6 +280,11 @@ function loadLanguage() {
     return selectedLanguage;
 }
 
+/**
+ * Checks, if local storage is supported
+ *
+ * @return {boolean}
+ */
 function isLocalStorageSupported() {
     if (typeof (window.localStorage) != "undefined") {
         return true;
