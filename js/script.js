@@ -246,11 +246,17 @@ function saveLanguage(language) {
 function loadLanguage() {
     var defaultLanguage = 'de' ;
 
-    if (isLocalStorageSupported()) {
-        return localStorage.getItem('freifunk_franken_lang');
+    if (!isLocalStorageSupported()) {
+        return defaultLanguage;
     }
 
-    return defaultLanguage;
+    var selectedLanguage = localStorage.getItem('freifunk_franken_lang');
+
+    if (null === selectedLanguage) {
+        selectedLanguage = defaultLanguage;
+    }
+
+    return selectedLanguage;
 }
 
 function isLocalStorageSupported() {
