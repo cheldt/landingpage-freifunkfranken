@@ -26,6 +26,7 @@ git clone https://github.com/FreifunkFranken/landingpage-freifunkfranken.git
 cd landingpage-freifunkfranken
 git checkout gh-pages
 npm install connect
+npm install serve-static
 node server.js
 ```
 Nun kann die Landingpage unter http://localhost:8080 geöffnet werden.
