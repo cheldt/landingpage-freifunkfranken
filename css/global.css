@@ -254,3 +254,53 @@ section.accItem > h3.open:before {
 section.accItem.initialized h3 {
   color: #dc0067;
 }
+
+/*****************************************************************************
+ * Language-Selection
+ ****************************************************************************/
+.lang-en {
+  display: none;
+}
+
+.language-selection-wrapper {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  background: #f5f5f5;
+  border: 1px solid #333333;
+  border-radius: 7px;
+  clear: both;
+  cursor: pointer;
+  float: left;
+  font-size: 0.75em;
+  margin: 0 0 0 28%;
+  padding: 1px 0 0 0;
+}
+
+.language-selection-item {
+  color: #333333;
+  float: left;
+  padding: 0 8px;
+}
+.language-selection-item:before {
+  position: relative;
+  left: -7px;
+  top: 0;
+  content: "";
+  background: #333333;
+  float: left;
+  margin: 0 0 1px 0;
+  overflow: hidden;
+  width: 1px;
+  height: 25px;
+}
+.language-selection-item:first-child:before {
+  display: none;
+}
+.language-selection-item:hover {
+  color: #dc0067;
+  text-decoration: underline;
+}
+.language-selection-item.selected {
+  color: #dc0067;
+}

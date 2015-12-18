@@ -196,4 +196,38 @@ $('#accessBtn').click(function(e) {
 	});
 });
 
+
+/*****************************************************************************
+ * Language-Selection
+ ****************************************************************************/
+initLanguageSelection();
+
 });
+
+function initLanguageSelection() {
+	var selectionHTML = '';
+	selectionHTML += '<div class="language-selection-wrapper">';
+		selectionHTML += '<div class="language-selection-item selected" data-language="de">';
+			selectionHTML += '<span>DE</span>';
+		selectionHTML += '</div>';
+		selectionHTML += '<div class="language-selection-item" data-language="en">';
+			selectionHTML += '<span>EN</span>';
+		selectionHTML += '</div>';
+	selectionHTML += '</div>';
+
+	$('body').append(selectionHTML);
+
+	$('.language-selection-item').click( function() {
+		changeLanguage($(this));
+	});
+}
+
+function changeLanguage($selectedItem) {
+	$('.language-selection-item').removeClass('selected');
+	$selectedItem.addClass('selected');
+
+	var selectedLanguage = $selectedItem.data('language');
+
+	$('.lang-sensitive').hide();
+	$('.lang-'+selectedLanguage).show();
+}
