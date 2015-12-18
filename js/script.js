@@ -217,9 +217,13 @@ function initLanguageSelection() {
 
 	$('#container').prepend(selectionHTML);
 
-	$('.language-selection-item').click( function() {
-		changeLanguage($(this));
-	});
+    $('.language-selection-item').click(function() {
+        changeLanguage($(this));
+    });
+
+    var previouslySelectedLanguage = loadLanguage();
+
+    changeLanguage($('.language-selection-item[data-language="' + previouslySelectedLanguage + '"]'));
 }
 
 function changeLanguage($selectedItem) {
@@ -230,4 +234,29 @@ function changeLanguage($selectedItem) {
 
 	$('.lang-sensitive').hide();
 	$('.lang-'+selectedLanguage).show();
+    saveLanguage(selectedLanguage);
+}
+
+function saveLanguage(language) {
+    if (isLocalStorageSupported()) {
+        localStorage.setItem('freifunk_franken_lang', language);
+    }
+}
+
+function loadLanguage() {
+    var defaultLanguage = 'de' ;
+
+    if (isLocalStorageSupported()) {
+        return localStorage.getItem('freifunk_franken_lang');
+    }
+
+    return defaultLanguage;
+}
+
+function isLocalStorageSupported() {
+    if (typeof (window.localStorage) != "undefined") {
+        return true;
+    }
+
+    return false;
 }
